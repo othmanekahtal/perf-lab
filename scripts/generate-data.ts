@@ -8,7 +8,7 @@
 import { mkdirSync, writeFileSync, statSync } from "node:fs";
 import { dirname, join } from "node:path";
 
-const ROW_COUNT = 20_000;
+const ROW_COUNT = 12_000;
 const SEED = 0xc0ffee;
 const OUT = join(process.cwd(), "public", "data", "transactions.json");
 

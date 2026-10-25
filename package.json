@@ -4,14 +4,17 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "generate": "tsx scripts/generate-data.ts && tsx scripts/generate-images.ts && tsx scripts/copy-fonts.ts",
+    "build": "node scripts/build.mjs",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "perf": "tsx scripts/perf.ts"
   },
   "dependencies": {
     "next": "16.4.3",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "recharts": "3.10.1"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "^4",
@@ -20,8 +23,13 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.3",
+    "inter-ui": "4.1.1",
+    "playwright": "1.64.1",
+    "sharp": "0.35.5",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "tsx": "^4.23.15",
+    "typescript": "^5",
+    "web-vitals": "6.2.3"
   },
   "packageManager": "pnpm@12.9.1"
 }

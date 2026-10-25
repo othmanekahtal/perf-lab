@@ -47,14 +47,15 @@ Raw per-run JSON (all runs, medians, request log, long-task list, attribution) i
 | # | Bug | Expected to hurt | How it shows up in the baseline |
 |---|-----|------------------|--------------------------------|
 | 1 | 10,000-row table, no virtualization, new `Intl` formatters per cell | INP, TBT, long tasks | Multi-second long tasks on data arrival and on every keystroke / click |
-| 2 | ~5 MB JSON parsed on the main thread; full filter → sort → aggregate on every render (no debounce, memo or worker) | INP, TBT, long tasks | Same long tasks; INP processing time in seconds |
-| 3 | 60 × ~1.9 MB / 3000 px images + a 4000 px / ~2 MB hero; plain `<img>`, no dimensions / `loading` / `sizes` / `srcset` / priority / preload | LCP, CLS, bytes | LCP = hero image after ~12.6 s of resource load; dimensionless images shift layout; tens of MB of image traffic |
+| 2 | ~5 MB JSON parsed on the main thread; full filter → sort → aggregate on every render (no debounce, memo or worker) | INP, TBT, long tasks | Same long tasks; INP is the search keystroke in every run, with 5–6.5 s of processing time |
+| 3 | 60 × ~1.9 MB / 3000 px images + a 4000 px / ~2 MB hero; plain `<img>`, no dimensions / `loading` / `sizes` / `srcset` / priority / preload | LCP, CLS, bytes | LCP = hero image in every run, ~12.57 s of resource load; ~68 MB of image traffic per run. The images also starve the JS: hydration (proxy: the data fetch starts) only happens at ~14.4 s |
 | 4 | Full unsubset Inter (4 × ~110 KB) via raw `@font-face` with no `font-display` | Text render time (FCP / hero text), bandwidth contention with the LCP image | Hero text paints ~1.6 s after FCP (A/B with `swap`: 2.04 s vs 0.46 s); ~446 KB of fonts |
 | 5 | Root god-context with a new value object every render; every section consumes it; no memoization; React Compiler off | INP, long tasks | Whole tree (header, sidebar, KPIs, 4 charts, 60 figures, 10k rows) re-renders per keystroke |
 | 6 | recharts imported statically everywhere, including in non-chart components via `lib/chart-utils.ts` | JS dashboard, JS /about, TBT | recharts (~93 KB gz chunk) ships on `/about`, which draws no chart |
-| 7 | Cookie / promo banner mounts ~1.5 s after hydration at the top, no reserved space | CLS | Largest layout shift; it pushes the whole viewport down |
+| 7 | Cookie / promo banner mounts ~1.5 s after hydration at the top, no reserved space | CLS | Largest layout shift in every run: the content wrapper (`div.md:flex`) pushed down at ~15.9 s, exactly 1.5 s after hydration. Making the banner taller raised CLS from 0.160 to 0.411 |
 
 ## 3. Results
 
 | Week | Date | Commit | Change | LCP (s) | INP (ms) | CLS | JS dashboard (KB gz) | JS /about (KB gz) | Long tasks (count / total ms / max ms) | TBT (ms) | Notes |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| 0 | 2026-10-25 | b2bda4d | Baseline | 12.77 | 6256 | 0.411 | 278.1 | 230.7 | 25 / 29596 / 5320 | 8912 | FCP 0.45 s · hero text 2.04 s · img 67.6 MB · fonts 445.7 KB · 21 tasks > 200 ms |

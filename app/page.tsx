@@ -1,20 +1,31 @@
 "use client";
 
 import { useData } from "@/components/AppContext";
-import { Charts } from "@/components/Charts";
 import { Hero } from "@/components/Hero";
 import { ImageGrid } from "@/components/ImageGrid";
-import { KpiCards } from "@/components/KpiCards";
+import { Skeleton } from "@/components/Skeleton";
 import { TransactionsTable } from "@/components/TransactionsTable";
+import dynamic from "next/dynamic";
+import { useEffect } from "react";
 
-function Skeleton({ className }: { className: string }) {
-  return (
-    <div className={`animate-pulse rounded-xl bg-slate-200/70 ${className}`} />
-  );
-}
+const Charts = dynamic(() => import("@/components/Charts").then((m) => m.Charts), {
+  ssr: false,
+  loading: () => <Skeleton className="h-72" />,
+});
+
+const KpiCards = dynamic(() => import("@/components/KpiCards").then((m) => m.KpiCards), {
+  ssr: false,
+  loading: () => <Skeleton className="h-28" />,
+});
 
 export default function DashboardPage() {
   const { ready } = useData();
+
+    useEffect(() => {
+    void import("@/components/Charts");
+    void import("@/components/KpiCards");
+  }, [])
+  
   return (
     <>
       <Hero />

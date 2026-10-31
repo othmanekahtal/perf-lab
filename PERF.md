@@ -66,3 +66,4 @@ Raw per-run JSON (all runs, medians, request log, long-task list, attribution) i
 | 4b | 2026-10-31 | 3a3c46f | web worker | 0.45 | 112 | 0.001 | 294.2 | 231.4 | 11 / 1276 / 456 | 496 | FCP 0.44 s · hero text 1.03 s · img 0.1 MB · fonts 445.7 KB · 1 tasks > 200 ms |
 | 5 | 2026-10-31 | 786911e | next/font local latin subset + swap | 0.52 | 112 | 0.001 | 294.2 | 231.4 | 15 / 1441 / 432 | 428 | FCP 0.52 s · hero text 0.52 s · img 0.1 MB · fonts 97.7 KB · 1 tasks > 200 ms |
 | 5b | 2026-10-31 | 82312a1 | font preload off | 0.42 | 104 | 0.001 | 294.2 | 231.4 | 11 / 1166 / 419 | 441 | FCP 0.41 s · hero text 0.41 s · img 0.1 MB · fonts 97.7 KB · 1 tasks > 200 ms |
+| 6 | 2026-10-31 | fcdb089 | split context + memo | 0.42 | 48 | 0.001 | 294.3 | 231.5 | 10 / 1021 / 370 | 403 | FCP 0.41 s · hero text 0.41 s · img 0.1 MB · fonts 97.7 KB · 1 tasks > 200 ms |

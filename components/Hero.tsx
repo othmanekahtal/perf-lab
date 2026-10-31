@@ -1,10 +1,10 @@
 "use client";
 
-import { useAppContext } from "./AppContext";
+import { memo } from "react";
+import { useData } from "./AppContext";
 import Image from "next/image";
-export function Hero() {
-  const { ready, filtered } = useAppContext();
-
+export const Hero = memo(function Hero() {
+  const { ready, filtered } = useData();
   return (
     <section className="overflow-hidden rounded-xl border border-slate-200 bg-slate-900 text-white shadow-sm">
       <Image
@@ -35,4 +35,4 @@ export function Hero() {
       </div>
     </section>
   );
-}
+});

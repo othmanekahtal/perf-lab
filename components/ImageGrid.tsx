@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useAppContext } from "./AppContext";
+import { useRegion, useUI } from "./AppContext";
+import { memo } from "react";
 
 const PHOTOS = Array.from({ length: 60 }, (_, i) => ({
   src: `/images/photo-${String(i + 1).padStart(2, "0")}.jpg`,
@@ -9,10 +10,9 @@ const PHOTOS = Array.from({ length: 60 }, (_, i) => ({
   channel: ["Paid social", "Display", "Email", "Search", "Affiliate"][i % 5],
 }));
 
-export function ImageGrid() {
-  // PERF-BUG #5: consumes the whole context, so all 60 figures re-render on every keystroke.
-  const { density, region } = useAppContext();
-
+export const ImageGrid = memo(function ImageGrid() {
+  const { density } = useUI();
+  const { region } = useRegion();
   return (
     <section className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
       <div className="flex items-baseline justify-between">
@@ -48,4 +48,4 @@ export function ImageGrid() {
       </div>
     </section>
   );
-}
+});

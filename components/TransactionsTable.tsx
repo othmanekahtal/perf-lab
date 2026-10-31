@@ -2,8 +2,8 @@
 
 // PERF-BUG #6: imports the recharts-backed chart utils just for badge colors.
 import { STATUS_COLORS } from "@/lib/chart-utils";
-import { useAppContext } from "./AppContext";
-import React from "react";
+import { useData, useSelection, useUI } from "./AppContext";
+import React, { memo } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
 
 const MAX_ROWS = 10_000;
@@ -24,16 +24,16 @@ function formatCurrency(amount: number, currency: string) {
   return formatter.format(amount);
 }
 
-export function TransactionsTable() {
-  // PERF-BUG #5: consumes the whole context, so all rows re-render on every keystroke.
-  const { filtered, selectedId, setSelectedId, density } = useAppContext();
-
-  const rows = filtered.slice(0, MAX_ROWS); 
+export const TransactionsTable = memo(function TransactionsTable() {
+  const { filtered } = useData();
+  const { selectedId, setSelectedId } = useSelection();
+  const { density } = useUI();
+  const rows = filtered.slice(0, MAX_ROWS);
   const pad = density === "compact" ? "px-3 py-1" : "px-3 py-2";
   const parentRef = React.useRef<HTMLDivElement>(null);
   // eslint-disable-next-line react-hooks/incompatible-library
   const rowVirtualizer = useVirtualizer({
-    count: rows.length, 
+    count: rows.length,
     getScrollElement: () => parentRef.current,
     estimateSize: () => (density === "compact" ? 45 : 53),
     overscan: 10,
@@ -151,4 +151,4 @@ export function TransactionsTable() {
       </div>
     </section>
   );
-}
+});

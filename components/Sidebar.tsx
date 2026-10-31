@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 // registry statically, so recharts ships in the layout bundle on every route.
 import { CHART_REGISTRY } from "@/lib/chart-utils";
 import type { RegionFilter } from "@/lib/types";
-import { useAppContext } from "./AppContext";
+import { useData, useRegion } from "./AppContext";
 
 const REGIONS: RegionFilter[] = [
   "All",
@@ -17,7 +17,8 @@ const REGIONS: RegionFilter[] = [
 ];
 
 export function Sidebar() {
-  const { region, setRegion, regionCounts } = useAppContext();
+  const { region, setRegion } = useRegion();
+  const { regionCounts } = useData();
   const pathname = usePathname();
 
   return (

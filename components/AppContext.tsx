@@ -4,6 +4,7 @@ import {
   createContext,
   useContext,
   useEffect,
+  useMemo,
   useRef,
   useState,
   type ReactNode,
@@ -12,29 +13,53 @@ import { usePathname } from "next/navigation";
 import { aggregate } from "@/lib/compute";
 import type { RegionFilter, Stats, Transaction } from "@/lib/types";
 import type { WorkerRequest, WorkerResponse } from "@/lib/transactions.worker";
-const EMPTY_STATS = aggregate([]); 
 
-export interface AppContextValue {
-  ready: boolean;
-  regionCounts: Record<RegionFilter, number> | null; // in the type;
-  filtered: Transaction[];
-  stats: Stats;
-  query: string;
-  setQuery: (q: string) => void;
-  region: RegionFilter;
-  setRegion: (r: RegionFilter) => void;
-  selectedId: string | null;
-  setSelectedId: (id: string | null) => void;
-  // Unrelated UI state that still lives in the same context.
-  density: "comfortable" | "compact";
-  setDensity: (d: "comfortable" | "compact") => void;
-  notificationsOpen: boolean;
-  setNotificationsOpen: (open: boolean) => void;
+const EMPTY_STATS = aggregate([]);
+
+function createSafeContext<T>(name: string) {
+  const Context = createContext<T | null>(null);
+  function useSafeContext(): T {
+    const value = useContext(Context);
+    if (value === null)
+      throw new Error(`${name} must be used inside <AppProvider>`);
+    return value;
+  }
+  return [Context, useSafeContext] as const;
 }
 
-// PERF-BUG #5: one god-context at the root layout. Every consumer (header,
-// sidebar, KPI cards, charts, table, image grid) re-renders on every keystroke.
-const AppContext = createContext<AppContextValue | null>(null);
+interface DataValue {
+  ready: boolean;
+  filtered: Transaction[];
+  stats: Stats;
+  regionCounts: Record<RegionFilter, number> | null;
+}
+interface QueryValue {
+  query: string;
+  setQuery: (q: string) => void;
+}
+interface RegionValue {
+  region: RegionFilter;
+  setRegion: (r: RegionFilter) => void;
+}
+interface SelectionValue {
+  selectedId: string | null;
+  setSelectedId: (id: string | null) => void;
+}
+interface UIValue {
+  density: "comfortable" | "compact";
+  setDensity: (d: "comfortable" | "compact") => void;
+}
+
+const [DataContext, useData] = createSafeContext<DataValue>("useData");
+const [QueryContext, useQuery] = createSafeContext<QueryValue>("useQuery");
+const [RegionContext, useRegion] = createSafeContext<RegionValue>("useRegion");
+const [SelectionContext, useSelection] =
+  createSafeContext<SelectionValue>("useSelection");
+const [UIContext, useUI] = createSafeContext<UIValue>("useUI");
+
+export { useData, useQuery, useRegion, useSelection, useUI };
+
+const EMPTY_ROWS: Transaction[] = [];
 
 export function AppProvider({ children }: { children: ReactNode }) {
   const workerRef = useRef<Worker | null>(null);
@@ -49,7 +74,6 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [density, setDensity] = useState<"comfortable" | "compact">(
     "comfortable",
   );
-  const [notificationsOpen, setNotificationsOpen] = useState(false);
 
   useEffect(() => {
     if (pathname !== "/") return;
@@ -76,30 +100,35 @@ export function AppProvider({ children }: { children: ReactNode }) {
     worker.postMessage(request);
   }, [query, region, pathname]);
 
-  // PERF-BUG #5: a brand-new value object on every render, so every consumer
-  // re-renders even when the slice it reads did not change.
-  const value: AppContextValue = {
-    ready: result !== null,
-    regionCounts: result?.regionCounts ?? null,
-    filtered: result?.filtered ?? [],
-    stats: result?.stats ?? EMPTY_STATS,
-    query,
-    setQuery,
-    region,
-    setRegion,
-    selectedId,
-    setSelectedId,
-    density,
-    setDensity,
-    notificationsOpen,
-    setNotificationsOpen,
-  };
+  const data = useMemo<DataValue>(
+    () => ({
+      ready: result !== null,
+      filtered: result?.filtered ?? EMPTY_ROWS,
+      stats: result?.stats ?? EMPTY_STATS,
+      regionCounts: result?.regionCounts ?? null,
+    }),
+    [result],
+  );
+  const queryValue = useMemo(() => ({ query, setQuery }), [query]);
+  const regionValue = useMemo(() => ({ region, setRegion }), [region]);
+  const selection = useMemo(
+    () => ({ selectedId, setSelectedId }),
+    [selectedId],
+  );
+  const ui = useMemo(
+    () => ({ density, setDensity}),
+    [density],
+  );
 
-  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
-}
-
-export function useAppContext(): AppContextValue {
-  const ctx = useContext(AppContext);
-  if (!ctx) throw new Error("useAppContext must be used inside <AppProvider>");
-  return ctx;
+  return (
+    <DataContext value={data}>
+      <QueryContext value={queryValue}>
+        <RegionContext value={regionValue}>
+          <SelectionContext value={selection}>
+            <UIContext value={ui}>{children}</UIContext>
+          </SelectionContext>
+        </RegionContext>
+      </QueryContext>
+    </DataContext>
+  );
 }

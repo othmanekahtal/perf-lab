@@ -25,7 +25,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
 <html lang="en" className={inter.variable}>
       <body className="min-h-screen bg-slate-50 text-slate-900 antialiased">
-        {/* PERF-BUG #5: a single god-context wraps the entire app. */}
         <AppProvider>
           <PromoBanner />
           <Header />

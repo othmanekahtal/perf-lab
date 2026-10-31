@@ -7,7 +7,6 @@ export function Hero() {
 
   return (
     <section className="overflow-hidden rounded-xl border border-slate-200 bg-slate-900 text-white shadow-sm">
-      {/* PERF-BUG #3: 4000px / ~2 MB hero in a plain <img>: no dimensions, no priority, no preload. */}
       <Image
         src="/images/hero.jpg"
         alt="Q3 campaign hero"

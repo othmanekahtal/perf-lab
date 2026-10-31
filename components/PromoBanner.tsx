@@ -25,7 +25,6 @@ const PREFERENCES = [
   },
 ];
 
-// PERF-BUG #7: a cookie/promo banner mounts ~1.5 s after hydration at the very
 // top of the page with no reserved space, pushing the whole layout down (CLS).
 export function PromoBanner() {
   const [visible, setVisible] = useState(false);

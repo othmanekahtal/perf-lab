@@ -31,7 +31,6 @@ export function ImageGrid() {
             key={photo.src}
             className="overflow-hidden rounded-lg border border-slate-100"
           >
-            {/* PERF-BUG #3: 3000px / ~1.9 MB JPEG in a plain <img>: no width/height, no loading, no sizes/srcset. */}
             <Image
               src={photo.src}
               alt={photo.title}

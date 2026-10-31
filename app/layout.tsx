@@ -18,6 +18,8 @@ const inter = localFont({
   weight: "100 900",     // a variable font: one file covers every weight
   display: "swap",       // the default; written out so you remember why
   variable: "--font-inter",
+  preload: false,
+
 });
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (

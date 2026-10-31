@@ -64,3 +64,4 @@ Raw per-run JSON (all runs, medians, request log, long-task list, attribution) i
 | 3 | 2026-10-31 | 593ded5 | virtualized table (tanstack) | 0.45 | 1864 | 0.001 | 293.6 | 230.8 | 11 / 8767 / 2558 | 2581 | FCP 0.44 s · hero text 1.03 s · img 0.1 MB · fonts 445.7 KB · 6 tasks > 200 ms |
 | 4a | 2026-10-31 | b18b94a | prepare once + memo + deferred query | 0.44 | 112 | 0.001 | 293.8 | 231.0 | 10 / 1105 / 400 | 484 | FCP 0.43 s · hero text 1.06 s · img 0.1 MB · fonts 445.7 KB · 1 tasks > 200 ms |
 | 4b | 2026-10-31 | 3a3c46f | web worker | 0.45 | 112 | 0.001 | 294.2 | 231.4 | 11 / 1276 / 456 | 496 | FCP 0.44 s · hero text 1.03 s · img 0.1 MB · fonts 445.7 KB · 1 tasks > 200 ms |
+| 5 | 2026-10-31 | 786911e | next/font local latin subset + swap | 0.52 | 112 | 0.001 | 294.2 | 231.4 | 15 / 1441 / 432 | 428 | FCP 0.52 s · hero text 0.52 s · img 0.1 MB · fonts 97.7 KB · 1 tasks > 200 ms |

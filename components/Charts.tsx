@@ -18,7 +18,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { SERIES_COLORS, STATUS_COLORS } from "@/lib/chart-utils";
+import { SERIES_COLORS, STATUS_COLORS } from "@/lib/colors";
 import { usd } from "@/lib/compute";
 import { useData } from "./AppContext";
 import { memo } from "react";

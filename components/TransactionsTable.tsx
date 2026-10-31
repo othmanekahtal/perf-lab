@@ -1,7 +1,6 @@
 "use client";
 
-// PERF-BUG #6: imports the recharts-backed chart utils just for badge colors.
-import { STATUS_COLORS } from "@/lib/chart-utils";
+import { STATUS_COLORS } from "@/lib/colors";
 import { useData, useSelection, useUI } from "./AppContext";
 import React, { memo } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";

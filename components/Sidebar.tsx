@@ -2,9 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-// PERF-BUG #6: the sidebar never draws a chart, but it imports the recharts-backed
-// registry statically, so recharts ships in the layout bundle on every route.
-import { CHART_REGISTRY } from "@/lib/chart-utils";
 import type { RegionFilter } from "@/lib/types";
 import { useData, useRegion } from "./AppContext";
 
@@ -15,6 +12,20 @@ const REGIONS: RegionFilter[] = [
   "LATAM",
   "APAC",
 ];
+
+export const SAVED_VIEWS = [
+  { kind: "area", label: "Revenue trend" },
+  { kind: "bar", label: "Category mix" },
+  { kind: "line", label: "Regional split" },
+  { kind: "pie", label: "Status breakdown" },
+  { kind: "composed", label: "Orders vs revenue" },
+  { kind: "scatter", label: "Deal size scatter" },
+  { kind: "radar", label: "Channel radar" },
+  { kind: "radial", label: "Quota attainment" },
+  { kind: "funnel", label: "Pipeline funnel" },
+  { kind: "treemap", label: "Account treemap" },
+  { kind: "sankey", label: "Revenue flow" },
+] as const;
 
 export function Sidebar() {
   const { region, setRegion } = useRegion();
@@ -71,19 +82,14 @@ export function Sidebar() {
             Saved views
           </p>
           <ul className="space-y-0.5">
-            {Object.entries(CHART_REGISTRY).map(
-              ([kind, { label, component }]) => (
-                <li
-                  key={kind}
-                  title={String(
-                    (component as { displayName?: string }).displayName ?? kind,
-                  )}
-                  className="rounded-md px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50"
-                >
-                  {label}
-                </li>
-              ),
-            )}
+            {SAVED_VIEWS.map(({ kind, label }) => (
+              <li
+                key={kind}
+                className="rounded-md px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50"
+              >
+                {label}
+              </li>
+            ))}
           </ul>
         </div>
       </nav>

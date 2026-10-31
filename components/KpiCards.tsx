@@ -1,6 +1,5 @@
 "use client";
 
-// PERF-BUG #6: recharts imported statically (no next/dynamic / React.lazy).
 import { Line, LineChart, ResponsiveContainer } from "recharts";
 import { usd } from "@/lib/compute";
 import { useData } from "./AppContext";

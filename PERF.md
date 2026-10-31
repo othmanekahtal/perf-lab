@@ -68,3 +68,4 @@ Raw per-run JSON (all runs, medians, request log, long-task list, attribution) i
 | 5b | 2026-10-31 | 82312a1 | font preload off | 0.42 | 104 | 0.001 | 294.2 | 231.4 | 11 / 1166 / 419 | 441 | FCP 0.41 s · hero text 0.41 s · img 0.1 MB · fonts 97.7 KB · 1 tasks > 200 ms |
 | 6 | 2026-10-31 | fcdb089 | split context + memo | 0.42 | 48 | 0.001 | 294.3 | 231.5 | 10 / 1021 / 370 | 403 | FCP 0.41 s · hero text 0.41 s · img 0.1 MB · fonts 97.7 KB · 1 tasks > 200 ms |
 | 7a | 2026-10-31 | 0133cad | recharts out of layout | 0.42 | 48 | 0.001 | 274.9 | 141.3 | 9 / 947 / 365 | 369 | FCP 0.41 s · hero text 0.41 s · img 0.1 MB · fonts 97.7 KB · 1 tasks > 200 ms |
+| 7b | 2026-10-31 | fcb3918 | dynamic charts | 0.42 | 56 | 0.001 | 288.6 | 141.2 | 11 / 1152 / 370 | 368 | FCP 0.42 s · hero text 0.42 s · img 0.1 MB · fonts 97.7 KB · 1 tasks > 200 ms |

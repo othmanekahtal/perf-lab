@@ -28,13 +28,11 @@ export function TransactionsTable() {
   // PERF-BUG #5: consumes the whole context, so all rows re-render on every keystroke.
   const { filtered, selectedId, setSelectedId, density } = useAppContext();
 
-  // PERF-BUG #1: up to 10,000 rows rendered straight into the DOM. No
-  // virtualization, no pagination, and fresh Intl formatters for every cell.
-  const rows = filtered.slice(0, MAX_ROWS); // move this line ABOVE useVirtualizer
+  const rows = filtered.slice(0, MAX_ROWS); 
   const pad = density === "compact" ? "px-3 py-1" : "px-3 py-2";
   const parentRef = React.useRef<HTMLDivElement>(null);
   const rowVirtualizer = useVirtualizer({
-    count: rows.length, // real number of rows
+    count: rows.length, 
     getScrollElement: () => parentRef.current,
     estimateSize: () => (density === "compact" ? 45 : 53),
     overscan: 10,

@@ -60,3 +60,4 @@ Raw per-run JSON (all runs, medians, request log, long-task list, attribution) i
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 0 | 2026-10-25 | b2bda4d | Baseline | 12.77 | 6256 | 0.411 | 278.1 | 230.7 | 25 / 29596 / 5320 | 8912 | FCP 0.45 s · hero text 2.04 s · img 67.6 MB · fonts 445.7 KB · 21 tasks > 200 ms |
 | 1 | 2026-10-31 | 7580cea | Fix banner CLS | 12.77 | 6008 | 0.001 | 278.1 | 230.8 | 33 / 30644 / 5589 | 9560 | FCP 0.45 s · hero text 2.04 s · img 63.8 MB · fonts 445.7 KB · 21 tasks > 200 ms |
+| 2 | 2026-10-31 | 04e4634 | next/image for hero + gallery | 0.44 | 5528 | 0.001 | 283.4 | 230.8 | 34 / 28746 / 5264 | 8326 | FCP 0.43 s · hero text 1.01 s · img 0.1 MB · fonts 445.7 KB · 22 tasks > 200 ms |

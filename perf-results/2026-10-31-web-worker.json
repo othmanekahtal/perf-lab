@@ -1,0 +1,1745 @@
+{
+  "meta": {
+    "label": "web worker",
+    "week": "4b",
+    "date": "2026-10-31",
+    "commit": "3a3c46f",
+    "machine": "Apple M1 Pro · 10 cores · 32 GB",
+    "os": "macOS 27.0.1",
+    "node": "v24.21.0",
+    "chromium": "156.0.8078.4",
+    "next": "16.4.3",
+    "settings": {
+      "cpuThrottle": 4,
+      "viewport": {
+        "width": 412,
+        "height": 823
+      },
+      "deviceScaleFactor": 1.75,
+      "cacheDisabled": true,
+      "network": "fast4g",
+      "networkConditions": {
+        "offline": false,
+        "latency": 165,
+        "downloadThroughput": 1012500,
+        "uploadThroughput": 168750
+      },
+      "searchQuery": "garcia",
+      "keyDelayMs": 150,
+      "runs": 5
+    }
+  },
+  "median": {
+    "lcpMs": 448,
+    "inpMs": 112,
+    "cls": 0.0007158543810154814,
+    "fcpMs": 440,
+    "heroTitleMs": 1028,
+    "tbtMs": 496,
+    "longTaskCount": 11,
+    "longTaskTotalMs": 1276,
+    "longTaskMaxMs": 456,
+    "longTasksOver200": 1,
+    "jsDashboardBytes": 301234,
+    "jsAboutBytes": 236955,
+    "imageBytes": 134089,
+    "fontBytes": 456404,
+    "dataBytes": 0
+  },
+  "row": "| 4b | 2026-10-31 | 3a3c46f | web worker | 0.45 | 112 | 0.001 | 294.2 | 231.4 | 11 / 1276 / 456 | 496 | FCP 0.44 s · hero text 1.03 s · img 0.1 MB · fonts 445.7 KB · 1 tasks > 200 ms |",
+  "runs": [
+    {
+      "run": 1,
+      "lcpMs": 448,
+      "cls": 0.0007158543810154814,
+      "inpMs": 152,
+      "fcpMs": 436,
+      "ttfbMs": 7.799999952316284,
+      "heroTitleMs": 1052,
+      "tbtMs": 553,
+      "longTasks": {
+        "count": 20,
+        "totalMs": 1997,
+        "maxMs": 510,
+        "over200": 1
+      },
+      "longTasksLoad": {
+        "count": 3,
+        "totalMs": 703,
+        "maxMs": 510
+      },
+      "longTasksInteraction": {
+        "count": 17,
+        "totalMs": 1294,
+        "maxMs": 143
+      },
+      "jsDashboardBytes": 301234,
+      "jsDashboardBytesTotal": 301234,
+      "jsDashboardFiles": 8,
+      "imageBytes": 134089,
+      "fontBytes": 456404,
+      "dataBytes": 0,
+      "interactionStartMs": 6616,
+      "attribution": {
+        "lcp": {
+          "value": 448,
+          "target": "img.w-full",
+          "url": "http://localhost:3100/_next/image?url=%2Fimages%2Fhero.jpg&w=750&q=75",
+          "timeToFirstByte": 7.799999952316284,
+          "resourceLoadDelay": 174.80000001192093,
+          "resourceLoadDuration": 196.4000000357628,
+          "elementRenderDelay": 69
+        },
+        "cls": {
+          "value": 0.0007158543810154814,
+          "largestShiftTarget": "button.flex.gap-2.hover:bg-slate-50.items-center.justify-between.px-3.py-1.5.rounded-md.shrink-0.text-left.text-slate-600.text-sm",
+          "largestShiftTime": 3422.699999988079,
+          "largestShiftValue": 0.0007158543810154814
+        },
+        "inp": {
+          "value": 152,
+          "interactionTarget": "input.bg-slate-50.border.border-slate-300.focus:bg-white.focus:border-indigo-500.focus:ring-2.focus:ring-indigo-200.outline-none.px-3.py-2.rounded-lg.text-sm.w-full",
+          "interactionType": "keyboard",
+          "inputDelay": 1.300000011920929,
+          "processingDuration": 148.89999997615814,
+          "presentationDelay": 1.800000011920929
+        }
+      },
+      "longTaskEntries": [
+        {
+          "start": 534,
+          "duration": 67
+        },
+        {
+          "start": 1068,
+          "duration": 126
+        },
+        {
+          "start": 2890,
+          "duration": 510
+        },
+        {
+          "start": 6745,
+          "duration": 103
+        },
+        {
+          "start": 6895,
+          "duration": 53
+        },
+        {
+          "start": 6983,
+          "duration": 93
+        },
+        {
+          "start": 7076,
+          "duration": 57
+        },
+        {
+          "start": 7216,
+          "duration": 81
+        },
+        {
+          "start": 7297,
+          "duration": 55
+        },
+        {
+          "start": 7361,
+          "duration": 54
+        },
+        {
+          "start": 7445,
+          "duration": 87
+        },
+        {
+          "start": 7533,
+          "duration": 58
+        },
+        {
+          "start": 7602,
+          "duration": 143
+        },
+        {
+          "start": 7759,
+          "duration": 54
+        },
+        {
+          "start": 7858,
+          "duration": 78
+        },
+        {
+          "start": 7979,
+          "duration": 62
+        },
+        {
+          "start": 8083,
+          "duration": 66
+        },
+        {
+          "start": 9281,
+          "duration": 61
+        },
+        {
+          "start": 10410,
+          "duration": 50
+        },
+        {
+          "start": 10468,
+          "duration": 139
+        }
+      ],
+      "encodings": [
+        "gzip"
+      ],
+      "requests": [
+        {
+          "url": "/",
+          "type": "Document",
+          "initiator": "other",
+          "startMs": 0,
+          "bytes": 8111
+        },
+        {
+          "url": "/_next/static/chunks/3j6s7w_fc6r6h.css",
+          "type": "Stylesheet",
+          "initiator": "parser",
+          "startMs": 182,
+          "bytes": 5589
+        },
+        {
+          "url": "/_next/static/chunks/0gb56ngb1zyk2.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 183,
+          "bytes": 4136
+        },
+        {
+          "url": "/_next/static/chunks/3lyznl7eucs45.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 183,
+          "bytes": 8785
+        },
+        {
+          "url": "/_next/static/chunks/0impdn6o0wr-o.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 183,
+          "bytes": 72343
+        },
+        {
+          "url": "/_next/static/chunks/1_g279m6ac_cz.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 183,
+          "bytes": 44485
+        },
+        {
+          "url": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 183,
+          "bytes": 4336
+        },
+        {
+          "url": "/_next/static/chunks/0g5u0s7ceeuxz.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 183,
+          "bytes": 9437
+        },
+        {
+          "url": "/_next/static/chunks/0v2d4sse8bp7v.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 183,
+          "bytes": 93433
+        },
+        {
+          "url": "/_next/static/chunks/0rtm9_alfryq8.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 183,
+          "bytes": 64279
+        },
+        {
+          "url": "/fonts/inter-600.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 371,
+          "bytes": 115096
+        },
+        {
+          "url": "/fonts/inter-400.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 371,
+          "bytes": 111552
+        },
+        {
+          "url": "/fonts/inter-500.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 371,
+          "bytes": 114632
+        },
+        {
+          "url": "/_next/static/chunks/turbopack-worker-1hrsqshz0gfey.js",
+          "type": "Script",
+          "initiator": "other",
+          "startMs": 1261,
+          "bytes": 0
+        },
+        {
+          "url": "/?_rsc=5CB68i4pnAekjehf",
+          "type": "Fetch",
+          "initiator": "script",
+          "startMs": 1270,
+          "bytes": 0
+        },
+        {
+          "url": "/about?_rsc=5CB68i4pnAekjehf",
+          "type": "Fetch",
+          "initiator": "script",
+          "startMs": 1270,
+          "bytes": 0
+        },
+        {
+          "url": "/fonts/inter-700.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 2922,
+          "bytes": 115124
+        }
+      ],
+      "jsAboutBytes": 236955,
+      "aboutRequests": [
+        {
+          "url": "/about",
+          "type": "Document",
+          "initiator": "other",
+          "startMs": 0,
+          "bytes": 3920
+        },
+        {
+          "url": "/_next/static/chunks/3j6s7w_fc6r6h.css",
+          "type": "Stylesheet",
+          "initiator": "parser",
+          "startMs": 184,
+          "bytes": 5589
+        },
+        {
+          "url": "/_next/static/chunks/0gb56ngb1zyk2.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 184,
+          "bytes": 4136
+        },
+        {
+          "url": "/_next/static/chunks/3lyznl7eucs45.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 184,
+          "bytes": 8785
+        },
+        {
+          "url": "/_next/static/chunks/0impdn6o0wr-o.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 184,
+          "bytes": 72343
+        },
+        {
+          "url": "/_next/static/chunks/1_g279m6ac_cz.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 184,
+          "bytes": 44485
+        },
+        {
+          "url": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 184,
+          "bytes": 4336
+        },
+        {
+          "url": "/_next/static/chunks/0g5u0s7ceeuxz.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 184,
+          "bytes": 9437
+        },
+        {
+          "url": "/_next/static/chunks/0v2d4sse8bp7v.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 185,
+          "bytes": 93433
+        },
+        {
+          "url": "/fonts/inter-400.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 390,
+          "bytes": 111552
+        },
+        {
+          "url": "/fonts/inter-600.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 402,
+          "bytes": 115096
+        },
+        {
+          "url": "/fonts/inter-500.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 403,
+          "bytes": 114632
+        },
+        {
+          "url": "/?_rsc=Sdev7PUlRw12F58X",
+          "type": "Fetch",
+          "initiator": "script",
+          "startMs": 968,
+          "bytes": 0
+        },
+        {
+          "url": "/about?_rsc=Sdev7PUlRw12F58X",
+          "type": "Fetch",
+          "initiator": "script",
+          "startMs": 968,
+          "bytes": 0
+        }
+      ]
+    },
+    {
+      "run": 2,
+      "lcpMs": 452,
+      "cls": 0.0007158543810154814,
+      "inpMs": 112,
+      "fcpMs": 444,
+      "ttfbMs": 6.699999988079071,
+      "heroTitleMs": 948,
+      "tbtMs": 536,
+      "longTasks": {
+        "count": 11,
+        "totalMs": 1276,
+        "maxMs": 478,
+        "over200": 1
+      },
+      "longTasksLoad": {
+        "count": 3,
+        "totalMs": 686,
+        "maxMs": 478
+      },
+      "longTasksInteraction": {
+        "count": 8,
+        "totalMs": 590,
+        "maxMs": 113
+      },
+      "jsDashboardBytes": 301234,
+      "jsDashboardBytesTotal": 301234,
+      "jsDashboardFiles": 8,
+      "imageBytes": 134089,
+      "fontBytes": 456404,
+      "dataBytes": 0,
+      "interactionStartMs": 6411,
+      "attribution": {
+        "lcp": {
+          "value": 452,
+          "target": "img.w-full",
+          "url": "http://localhost:3100/_next/image?url=%2Fimages%2Fhero.jpg&w=750&q=75",
+          "timeToFirstByte": 6.699999988079071,
+          "resourceLoadDelay": 178,
+          "resourceLoadDuration": 184.60000002384186,
+          "elementRenderDelay": 82.69999998807907
+        },
+        "cls": {
+          "value": 0.0007158543810154814,
+          "largestShiftTarget": "button.flex.gap-2.hover:bg-slate-50.items-center.justify-between.px-3.py-1.5.rounded-md.shrink-0.text-left.text-slate-600.text-sm",
+          "largestShiftTime": 3282,
+          "largestShiftValue": 0.0007158543810154814
+        },
+        "inp": {
+          "value": 112,
+          "interactionTarget": "input.bg-slate-50.border.border-slate-300.focus:bg-white.focus:border-indigo-500.focus:ring-2.focus:ring-indigo-200.outline-none.px-3.py-2.rounded-lg.text-sm.w-full",
+          "interactionType": "pointer",
+          "inputDelay": 0.10000002384185791,
+          "processingDuration": 110.39999997615814,
+          "presentationDelay": 1.5
+        }
+      },
+      "longTaskEntries": [
+        {
+          "start": 543,
+          "duration": 89
+        },
+        {
+          "start": 1048,
+          "duration": 119
+        },
+        {
+          "start": 2786,
+          "duration": 478
+        },
+        {
+          "start": 6446,
+          "duration": 64
+        },
+        {
+          "start": 6613,
+          "duration": 71
+        },
+        {
+          "start": 6823,
+          "duration": 58
+        },
+        {
+          "start": 7029,
+          "duration": 64
+        },
+        {
+          "start": 7156,
+          "duration": 113
+        },
+        {
+          "start": 7393,
+          "duration": 56
+        },
+        {
+          "start": 7586,
+          "duration": 58
+        },
+        {
+          "start": 9933,
+          "duration": 106
+        }
+      ],
+      "encodings": [
+        "gzip"
+      ],
+      "requests": [
+        {
+          "url": "/",
+          "type": "Document",
+          "initiator": "other",
+          "startMs": 0,
+          "bytes": 8111
+        },
+        {
+          "url": "/_next/static/chunks/3j6s7w_fc6r6h.css",
+          "type": "Stylesheet",
+          "initiator": "parser",
+          "startMs": 184,
+          "bytes": 5589
+        },
+        {
+          "url": "/_next/static/chunks/0gb56ngb1zyk2.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 185,
+          "bytes": 4136
+        },
+        {
+          "url": "/_next/static/chunks/3lyznl7eucs45.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 185,
+          "bytes": 8785
+        },
+        {
+          "url": "/_next/static/chunks/0impdn6o0wr-o.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 186,
+          "bytes": 72343
+        },
+        {
+          "url": "/_next/static/chunks/1_g279m6ac_cz.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 186,
+          "bytes": 44485
+        },
+        {
+          "url": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 186,
+          "bytes": 4336
+        },
+        {
+          "url": "/_next/static/chunks/0g5u0s7ceeuxz.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 186,
+          "bytes": 9437
+        },
+        {
+          "url": "/_next/static/chunks/0v2d4sse8bp7v.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 186,
+          "bytes": 93433
+        },
+        {
+          "url": "/_next/static/chunks/0rtm9_alfryq8.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 186,
+          "bytes": 64279
+        },
+        {
+          "url": "/fonts/inter-600.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 375,
+          "bytes": 115096
+        },
+        {
+          "url": "/fonts/inter-400.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 375,
+          "bytes": 111552
+        },
+        {
+          "url": "/fonts/inter-500.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 375,
+          "bytes": 114632
+        },
+        {
+          "url": "/_next/static/chunks/turbopack-worker-1hrsqshz0gfey.js",
+          "type": "Script",
+          "initiator": "other",
+          "startMs": 1261,
+          "bytes": 0
+        },
+        {
+          "url": "/?_rsc=5CB68i4pnAekjehf",
+          "type": "Fetch",
+          "initiator": "script",
+          "startMs": 1281,
+          "bytes": 0
+        },
+        {
+          "url": "/about?_rsc=5CB68i4pnAekjehf",
+          "type": "Fetch",
+          "initiator": "script",
+          "startMs": 1282,
+          "bytes": 0
+        },
+        {
+          "url": "/fonts/inter-700.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 2821,
+          "bytes": 115124
+        }
+      ],
+      "jsAboutBytes": 236955,
+      "aboutRequests": [
+        {
+          "url": "/about",
+          "type": "Document",
+          "initiator": "other",
+          "startMs": 0,
+          "bytes": 3920
+        },
+        {
+          "url": "/_next/static/chunks/3j6s7w_fc6r6h.css",
+          "type": "Stylesheet",
+          "initiator": "parser",
+          "startMs": 182,
+          "bytes": 5589
+        },
+        {
+          "url": "/_next/static/chunks/0gb56ngb1zyk2.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 182,
+          "bytes": 4136
+        },
+        {
+          "url": "/_next/static/chunks/3lyznl7eucs45.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 183,
+          "bytes": 8785
+        },
+        {
+          "url": "/_next/static/chunks/0impdn6o0wr-o.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 183,
+          "bytes": 72343
+        },
+        {
+          "url": "/_next/static/chunks/1_g279m6ac_cz.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 183,
+          "bytes": 44485
+        },
+        {
+          "url": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 183,
+          "bytes": 4336
+        },
+        {
+          "url": "/_next/static/chunks/0g5u0s7ceeuxz.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 183,
+          "bytes": 9437
+        },
+        {
+          "url": "/_next/static/chunks/0v2d4sse8bp7v.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 183,
+          "bytes": 93433
+        },
+        {
+          "url": "/fonts/inter-400.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 380,
+          "bytes": 111552
+        },
+        {
+          "url": "/fonts/inter-600.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 392,
+          "bytes": 115096
+        },
+        {
+          "url": "/fonts/inter-500.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 392,
+          "bytes": 114632
+        },
+        {
+          "url": "/?_rsc=Sdev7PUlRw12F58X",
+          "type": "Fetch",
+          "initiator": "script",
+          "startMs": 962,
+          "bytes": 0
+        },
+        {
+          "url": "/about?_rsc=Sdev7PUlRw12F58X",
+          "type": "Fetch",
+          "initiator": "script",
+          "startMs": 962,
+          "bytes": 0
+        }
+      ]
+    },
+    {
+      "run": 3,
+      "lcpMs": 448,
+      "cls": 0.0007158543810154814,
+      "inpMs": 144,
+      "fcpMs": 440,
+      "ttfbMs": 3.399999976158142,
+      "heroTitleMs": 1056,
+      "tbtMs": 496,
+      "longTasks": {
+        "count": 15,
+        "totalMs": 1483,
+        "maxMs": 456,
+        "over200": 1
+      },
+      "longTasksLoad": {
+        "count": 3,
+        "totalMs": 646,
+        "maxMs": 456
+      },
+      "longTasksInteraction": {
+        "count": 12,
+        "totalMs": 837,
+        "maxMs": 125
+      },
+      "jsDashboardBytes": 301234,
+      "jsDashboardBytesTotal": 301234,
+      "jsDashboardFiles": 8,
+      "imageBytes": 134089,
+      "fontBytes": 456404,
+      "dataBytes": 0,
+      "interactionStartMs": 6504,
+      "attribution": {
+        "lcp": {
+          "value": 448,
+          "target": "img.w-full",
+          "url": "http://localhost:3100/_next/image?url=%2Fimages%2Fhero.jpg&w=750&q=75",
+          "timeToFirstByte": 3.399999976158142,
+          "resourceLoadDelay": 177.39999997615814,
+          "resourceLoadDuration": 197.5,
+          "elementRenderDelay": 69.70000004768372
+        },
+        "cls": {
+          "value": 0.0007158543810154814,
+          "largestShiftTarget": "button.flex.gap-2.hover:bg-slate-50.items-center.justify-between.px-3.py-1.5.rounded-md.shrink-0.text-left.text-slate-600.text-sm",
+          "largestShiftTime": 3352.2999999523163,
+          "largestShiftValue": 0.0007158543810154814
+        },
+        "inp": {
+          "value": 144,
+          "interactionTarget": "input.bg-slate-50.border.border-slate-300.focus:bg-white.focus:border-indigo-500.focus:ring-2.focus:ring-indigo-200.outline-none.px-3.py-2.rounded-lg.text-sm.w-full",
+          "interactionType": "keyboard",
+          "inputDelay": 0.5,
+          "processingDuration": 142.0999999642372,
+          "presentationDelay": 1.4000000357627869
+        }
+      },
+      "longTaskEntries": [
+        {
+          "start": 538,
+          "duration": 76
+        },
+        {
+          "start": 1067,
+          "duration": 114
+        },
+        {
+          "start": 2872,
+          "duration": 456
+        },
+        {
+          "start": 6556,
+          "duration": 89
+        },
+        {
+          "start": 6645,
+          "duration": 52
+        },
+        {
+          "start": 6777,
+          "duration": 80
+        },
+        {
+          "start": 6872,
+          "duration": 56
+        },
+        {
+          "start": 7003,
+          "duration": 62
+        },
+        {
+          "start": 7203,
+          "duration": 57
+        },
+        {
+          "start": 7340,
+          "duration": 97
+        },
+        {
+          "start": 7560,
+          "duration": 51
+        },
+        {
+          "start": 7756,
+          "duration": 52
+        },
+        {
+          "start": 8952,
+          "duration": 62
+        },
+        {
+          "start": 10076,
+          "duration": 54
+        },
+        {
+          "start": 10138,
+          "duration": 125
+        }
+      ],
+      "encodings": [
+        "gzip"
+      ],
+      "requests": [
+        {
+          "url": "/",
+          "type": "Document",
+          "initiator": "other",
+          "startMs": 0,
+          "bytes": 8111
+        },
+        {
+          "url": "/_next/static/chunks/3j6s7w_fc6r6h.css",
+          "type": "Stylesheet",
+          "initiator": "parser",
+          "startMs": 181,
+          "bytes": 5589
+        },
+        {
+          "url": "/_next/static/chunks/0gb56ngb1zyk2.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 181,
+          "bytes": 4136
+        },
+        {
+          "url": "/_next/static/chunks/3lyznl7eucs45.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 181,
+          "bytes": 8785
+        },
+        {
+          "url": "/_next/static/chunks/0impdn6o0wr-o.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 181,
+          "bytes": 72343
+        },
+        {
+          "url": "/_next/static/chunks/1_g279m6ac_cz.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 181,
+          "bytes": 44485
+        },
+        {
+          "url": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 181,
+          "bytes": 4336
+        },
+        {
+          "url": "/_next/static/chunks/0g5u0s7ceeuxz.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 181,
+          "bytes": 9437
+        },
+        {
+          "url": "/_next/static/chunks/0v2d4sse8bp7v.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 181,
+          "bytes": 93433
+        },
+        {
+          "url": "/_next/static/chunks/0rtm9_alfryq8.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 181,
+          "bytes": 64279
+        },
+        {
+          "url": "/fonts/inter-600.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 372,
+          "bytes": 115096
+        },
+        {
+          "url": "/fonts/inter-400.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 372,
+          "bytes": 111552
+        },
+        {
+          "url": "/fonts/inter-500.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 373,
+          "bytes": 114632
+        },
+        {
+          "url": "/_next/static/chunks/turbopack-worker-1hrsqshz0gfey.js",
+          "type": "Script",
+          "initiator": "other",
+          "startMs": 1261,
+          "bytes": 0
+        },
+        {
+          "url": "/?_rsc=5CB68i4pnAekjehf",
+          "type": "Fetch",
+          "initiator": "script",
+          "startMs": 1272,
+          "bytes": 0
+        },
+        {
+          "url": "/about?_rsc=5CB68i4pnAekjehf",
+          "type": "Fetch",
+          "initiator": "script",
+          "startMs": 1272,
+          "bytes": 0
+        },
+        {
+          "url": "/fonts/inter-700.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 2901,
+          "bytes": 115124
+        }
+      ],
+      "jsAboutBytes": 236955,
+      "aboutRequests": [
+        {
+          "url": "/about",
+          "type": "Document",
+          "initiator": "other",
+          "startMs": 0,
+          "bytes": 3920
+        },
+        {
+          "url": "/_next/static/chunks/3j6s7w_fc6r6h.css",
+          "type": "Stylesheet",
+          "initiator": "parser",
+          "startMs": 180,
+          "bytes": 5589
+        },
+        {
+          "url": "/_next/static/chunks/0gb56ngb1zyk2.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 181,
+          "bytes": 4136
+        },
+        {
+          "url": "/_next/static/chunks/3lyznl7eucs45.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 181,
+          "bytes": 8785
+        },
+        {
+          "url": "/_next/static/chunks/0impdn6o0wr-o.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 181,
+          "bytes": 72343
+        },
+        {
+          "url": "/_next/static/chunks/1_g279m6ac_cz.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 181,
+          "bytes": 44485
+        },
+        {
+          "url": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 181,
+          "bytes": 4336
+        },
+        {
+          "url": "/_next/static/chunks/0g5u0s7ceeuxz.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 181,
+          "bytes": 9437
+        },
+        {
+          "url": "/_next/static/chunks/0v2d4sse8bp7v.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 181,
+          "bytes": 93433
+        },
+        {
+          "url": "/fonts/inter-400.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 379,
+          "bytes": 111552
+        },
+        {
+          "url": "/fonts/inter-600.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 390,
+          "bytes": 115096
+        },
+        {
+          "url": "/fonts/inter-500.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 391,
+          "bytes": 114632
+        },
+        {
+          "url": "/?_rsc=Sdev7PUlRw12F58X",
+          "type": "Fetch",
+          "initiator": "script",
+          "startMs": 962,
+          "bytes": 0
+        },
+        {
+          "url": "/about?_rsc=Sdev7PUlRw12F58X",
+          "type": "Fetch",
+          "initiator": "script",
+          "startMs": 962,
+          "bytes": 0
+        }
+      ]
+    },
+    {
+      "run": 4,
+      "lcpMs": 448,
+      "cls": 0.0007158543810154814,
+      "inpMs": 96,
+      "fcpMs": 440,
+      "ttfbMs": 4.199999988079071,
+      "heroTitleMs": 1012,
+      "tbtMs": 408,
+      "longTasks": {
+        "count": 10,
+        "totalMs": 1070,
+        "maxMs": 366,
+        "over200": 1
+      },
+      "longTasksLoad": {
+        "count": 3,
+        "totalMs": 558,
+        "maxMs": 366
+      },
+      "longTasksInteraction": {
+        "count": 7,
+        "totalMs": 512,
+        "maxMs": 115
+      },
+      "jsDashboardBytes": 301234,
+      "jsDashboardBytesTotal": 301234,
+      "jsDashboardFiles": 8,
+      "imageBytes": 134089,
+      "fontBytes": 456404,
+      "dataBytes": 0,
+      "interactionStartMs": 6446,
+      "attribution": {
+        "lcp": {
+          "value": 448,
+          "target": "img.w-full",
+          "url": "http://localhost:3100/_next/image?url=%2Fimages%2Fhero.jpg&w=750&q=75",
+          "timeToFirstByte": 4.199999988079071,
+          "resourceLoadDelay": 177.10000002384186,
+          "resourceLoadDuration": 189,
+          "elementRenderDelay": 77.69999998807907
+        },
+        "cls": {
+          "value": 0.0007158543810154814,
+          "largestShiftTarget": "button.flex.gap-2.hover:bg-slate-50.items-center.justify-between.px-3.py-1.5.rounded-md.shrink-0.text-left.text-slate-600.text-sm",
+          "largestShiftTime": 3224.699999988079,
+          "largestShiftValue": 0.0007158543810154814
+        },
+        "inp": {
+          "value": 96,
+          "interactionTarget": "input.bg-slate-50.border.border-slate-300.focus:bg-white.focus:border-indigo-500.focus:ring-2.focus:ring-indigo-200.outline-none.px-3.py-2.rounded-lg.text-sm.w-full",
+          "interactionType": "pointer",
+          "inputDelay": 0.8999999761581421,
+          "processingDuration": 56,
+          "presentationDelay": 39.10000002384186
+        }
+      },
+      "longTaskEntries": [
+        {
+          "start": 534,
+          "duration": 77
+        },
+        {
+          "start": 1054,
+          "duration": 115
+        },
+        {
+          "start": 2840,
+          "duration": 366
+        },
+        {
+          "start": 6622,
+          "duration": 69
+        },
+        {
+          "start": 6795,
+          "duration": 61
+        },
+        {
+          "start": 7012,
+          "duration": 53
+        },
+        {
+          "start": 7137,
+          "duration": 100
+        },
+        {
+          "start": 7355,
+          "duration": 52
+        },
+        {
+          "start": 7557,
+          "duration": 62
+        },
+        {
+          "start": 9899,
+          "duration": 115
+        }
+      ],
+      "encodings": [
+        "gzip"
+      ],
+      "requests": [
+        {
+          "url": "/",
+          "type": "Document",
+          "initiator": "other",
+          "startMs": 0,
+          "bytes": 8111
+        },
+        {
+          "url": "/_next/static/chunks/3j6s7w_fc6r6h.css",
+          "type": "Stylesheet",
+          "initiator": "parser",
+          "startMs": 181,
+          "bytes": 5589
+        },
+        {
+          "url": "/_next/static/chunks/0gb56ngb1zyk2.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 181,
+          "bytes": 4136
+        },
+        {
+          "url": "/_next/static/chunks/3lyznl7eucs45.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 181,
+          "bytes": 8785
+        },
+        {
+          "url": "/_next/static/chunks/0impdn6o0wr-o.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 182,
+          "bytes": 72343
+        },
+        {
+          "url": "/_next/static/chunks/1_g279m6ac_cz.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 182,
+          "bytes": 44485
+        },
+        {
+          "url": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 182,
+          "bytes": 4336
+        },
+        {
+          "url": "/_next/static/chunks/0g5u0s7ceeuxz.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 182,
+          "bytes": 9437
+        },
+        {
+          "url": "/_next/static/chunks/0v2d4sse8bp7v.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 182,
+          "bytes": 93433
+        },
+        {
+          "url": "/_next/static/chunks/0rtm9_alfryq8.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 182,
+          "bytes": 64279
+        },
+        {
+          "url": "/fonts/inter-600.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 370,
+          "bytes": 115096
+        },
+        {
+          "url": "/fonts/inter-400.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 370,
+          "bytes": 111552
+        },
+        {
+          "url": "/fonts/inter-500.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 370,
+          "bytes": 114632
+        },
+        {
+          "url": "/_next/static/chunks/turbopack-worker-1hrsqshz0gfey.js",
+          "type": "Script",
+          "initiator": "other",
+          "startMs": 1246,
+          "bytes": 0
+        },
+        {
+          "url": "/?_rsc=5CB68i4pnAekjehf",
+          "type": "Fetch",
+          "initiator": "script",
+          "startMs": 1257,
+          "bytes": 0
+        },
+        {
+          "url": "/about?_rsc=5CB68i4pnAekjehf",
+          "type": "Fetch",
+          "initiator": "script",
+          "startMs": 1257,
+          "bytes": 0
+        },
+        {
+          "url": "/fonts/inter-700.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 2865,
+          "bytes": 115124
+        }
+      ],
+      "jsAboutBytes": 236955,
+      "aboutRequests": [
+        {
+          "url": "/about",
+          "type": "Document",
+          "initiator": "other",
+          "startMs": 0,
+          "bytes": 3920
+        },
+        {
+          "url": "/_next/static/chunks/3j6s7w_fc6r6h.css",
+          "type": "Stylesheet",
+          "initiator": "parser",
+          "startMs": 179,
+          "bytes": 5589
+        },
+        {
+          "url": "/_next/static/chunks/0gb56ngb1zyk2.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 180,
+          "bytes": 4136
+        },
+        {
+          "url": "/_next/static/chunks/3lyznl7eucs45.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 180,
+          "bytes": 8785
+        },
+        {
+          "url": "/_next/static/chunks/0impdn6o0wr-o.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 180,
+          "bytes": 72343
+        },
+        {
+          "url": "/_next/static/chunks/1_g279m6ac_cz.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 180,
+          "bytes": 44485
+        },
+        {
+          "url": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 181,
+          "bytes": 4336
+        },
+        {
+          "url": "/_next/static/chunks/0g5u0s7ceeuxz.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 181,
+          "bytes": 9437
+        },
+        {
+          "url": "/_next/static/chunks/0v2d4sse8bp7v.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 181,
+          "bytes": 93433
+        },
+        {
+          "url": "/fonts/inter-400.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 379,
+          "bytes": 111552
+        },
+        {
+          "url": "/fonts/inter-600.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 388,
+          "bytes": 115096
+        },
+        {
+          "url": "/fonts/inter-500.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 389,
+          "bytes": 114632
+        },
+        {
+          "url": "/?_rsc=Sdev7PUlRw12F58X",
+          "type": "Fetch",
+          "initiator": "script",
+          "startMs": 958,
+          "bytes": 0
+        },
+        {
+          "url": "/about?_rsc=Sdev7PUlRw12F58X",
+          "type": "Fetch",
+          "initiator": "script",
+          "startMs": 958,
+          "bytes": 0
+        }
+      ]
+    },
+    {
+      "run": 5,
+      "lcpMs": 432,
+      "cls": 0.0007158543810154814,
+      "inpMs": 96,
+      "fcpMs": 428,
+      "ttfbMs": 3.099999964237213,
+      "heroTitleMs": 1028,
+      "tbtMs": 421,
+      "longTasks": {
+        "count": 11,
+        "totalMs": 1098,
+        "maxMs": 381,
+        "over200": 1
+      },
+      "longTasksLoad": {
+        "count": 3,
+        "totalMs": 571,
+        "maxMs": 381
+      },
+      "longTasksInteraction": {
+        "count": 8,
+        "totalMs": 527,
+        "maxMs": 101
+      },
+      "jsDashboardBytes": 301234,
+      "jsDashboardBytesTotal": 301234,
+      "jsDashboardFiles": 8,
+      "imageBytes": 134089,
+      "fontBytes": 456404,
+      "dataBytes": 0,
+      "interactionStartMs": 6521,
+      "attribution": {
+        "lcp": {
+          "value": 432,
+          "target": "img.w-full",
+          "url": "http://localhost:3100/_next/image?url=%2Fimages%2Fhero.jpg&w=750&q=75",
+          "timeToFirstByte": 3.099999964237213,
+          "resourceLoadDelay": 179.30000001192093,
+          "resourceLoadDuration": 189.19999998807907,
+          "elementRenderDelay": 60.40000003576279
+        },
+        "cls": {
+          "value": 0.0007158543810154814,
+          "largestShiftTarget": "button.flex.gap-2.hover:bg-slate-50.items-center.justify-between.px-3.py-1.5.rounded-md.shrink-0.text-left.text-slate-600.text-sm",
+          "largestShiftTime": 3246.899999976158,
+          "largestShiftValue": 0.0007158543810154814
+        },
+        "inp": {
+          "value": 96,
+          "interactionTarget": "input.bg-slate-50.border.border-slate-300.focus:bg-white.focus:border-indigo-500.focus:ring-2.focus:ring-indigo-200.outline-none.px-3.py-2.rounded-lg.text-sm.w-full",
+          "interactionType": "pointer",
+          "inputDelay": 0.699999988079071,
+          "processingDuration": 62.19999998807907,
+          "presentationDelay": 33.10000002384186
+        }
+      },
+      "longTaskEntries": [
+        {
+          "start": 535,
+          "duration": 74
+        },
+        {
+          "start": 1056,
+          "duration": 116
+        },
+        {
+          "start": 2847,
+          "duration": 381
+        },
+        {
+          "start": 6558,
+          "duration": 55
+        },
+        {
+          "start": 6716,
+          "duration": 67
+        },
+        {
+          "start": 6912,
+          "duration": 51
+        },
+        {
+          "start": 7120,
+          "duration": 57
+        },
+        {
+          "start": 7245,
+          "duration": 101
+        },
+        {
+          "start": 7477,
+          "duration": 56
+        },
+        {
+          "start": 7675,
+          "duration": 52
+        },
+        {
+          "start": 9979,
+          "duration": 88
+        }
+      ],
+      "encodings": [
+        "gzip"
+      ],
+      "requests": [
+        {
+          "url": "/",
+          "type": "Document",
+          "initiator": "other",
+          "startMs": 0,
+          "bytes": 8111
+        },
+        {
+          "url": "/_next/static/chunks/3j6s7w_fc6r6h.css",
+          "type": "Stylesheet",
+          "initiator": "parser",
+          "startMs": 182,
+          "bytes": 5589
+        },
+        {
+          "url": "/_next/static/chunks/0gb56ngb1zyk2.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 182,
+          "bytes": 4136
+        },
+        {
+          "url": "/_next/static/chunks/3lyznl7eucs45.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 182,
+          "bytes": 8785
+        },
+        {
+          "url": "/_next/static/chunks/0impdn6o0wr-o.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 182,
+          "bytes": 72343
+        },
+        {
+          "url": "/_next/static/chunks/1_g279m6ac_cz.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 182,
+          "bytes": 44485
+        },
+        {
+          "url": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 182,
+          "bytes": 4336
+        },
+        {
+          "url": "/_next/static/chunks/0g5u0s7ceeuxz.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 183,
+          "bytes": 9437
+        },
+        {
+          "url": "/_next/static/chunks/0v2d4sse8bp7v.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 183,
+          "bytes": 93433
+        },
+        {
+          "url": "/_next/static/chunks/0rtm9_alfryq8.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 183,
+          "bytes": 64279
+        },
+        {
+          "url": "/fonts/inter-600.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 369,
+          "bytes": 115096
+        },
+        {
+          "url": "/fonts/inter-400.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 370,
+          "bytes": 111552
+        },
+        {
+          "url": "/fonts/inter-500.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 370,
+          "bytes": 114632
+        },
+        {
+          "url": "/_next/static/chunks/turbopack-worker-1hrsqshz0gfey.js",
+          "type": "Script",
+          "initiator": "other",
+          "startMs": 1248,
+          "bytes": 0
+        },
+        {
+          "url": "/?_rsc=5CB68i4pnAekjehf",
+          "type": "Fetch",
+          "initiator": "script",
+          "startMs": 1265,
+          "bytes": 0
+        },
+        {
+          "url": "/about?_rsc=5CB68i4pnAekjehf",
+          "type": "Fetch",
+          "initiator": "script",
+          "startMs": 1265,
+          "bytes": 0
+        },
+        {
+          "url": "/fonts/inter-700.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 2872,
+          "bytes": 115124
+        }
+      ],
+      "jsAboutBytes": 236955,
+      "aboutRequests": [
+        {
+          "url": "/about",
+          "type": "Document",
+          "initiator": "other",
+          "startMs": 0,
+          "bytes": 3920
+        },
+        {
+          "url": "/_next/static/chunks/3j6s7w_fc6r6h.css",
+          "type": "Stylesheet",
+          "initiator": "parser",
+          "startMs": 179,
+          "bytes": 5589
+        },
+        {
+          "url": "/_next/static/chunks/0gb56ngb1zyk2.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 180,
+          "bytes": 4136
+        },
+        {
+          "url": "/_next/static/chunks/3lyznl7eucs45.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 180,
+          "bytes": 8785
+        },
+        {
+          "url": "/_next/static/chunks/0impdn6o0wr-o.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 180,
+          "bytes": 72343
+        },
+        {
+          "url": "/_next/static/chunks/1_g279m6ac_cz.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 180,
+          "bytes": 44485
+        },
+        {
+          "url": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 180,
+          "bytes": 4336
+        },
+        {
+          "url": "/_next/static/chunks/0g5u0s7ceeuxz.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 180,
+          "bytes": 9437
+        },
+        {
+          "url": "/_next/static/chunks/0v2d4sse8bp7v.js",
+          "type": "Script",
+          "initiator": "parser",
+          "startMs": 180,
+          "bytes": 93433
+        },
+        {
+          "url": "/fonts/inter-400.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 376,
+          "bytes": 111552
+        },
+        {
+          "url": "/fonts/inter-600.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 385,
+          "bytes": 115096
+        },
+        {
+          "url": "/fonts/inter-500.woff2",
+          "type": "Font",
+          "initiator": "parser",
+          "startMs": 385,
+          "bytes": 114632
+        },
+        {
+          "url": "/?_rsc=Sdev7PUlRw12F58X",
+          "type": "Fetch",
+          "initiator": "script",
+          "startMs": 941,
+          "bytes": 0
+        },
+        {
+          "url": "/about?_rsc=Sdev7PUlRw12F58X",
+          "type": "Fetch",
+          "initiator": "script",
+          "startMs": 942,
+          "bytes": 0
+        }
+      ]
+    }
+  ]
+}

@@ -3,20 +3,16 @@
 import {
   createContext,
   useContext,
-  useDeferredValue,
   useEffect,
-  useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
 import { usePathname } from "next/navigation";
-import {
-  aggregate,
-  filterTransactions,
-  PreparedData,
-  prepareTransactions,
-} from "@/lib/compute";
+import { aggregate } from "@/lib/compute";
 import type { RegionFilter, Stats, Transaction } from "@/lib/types";
+import type { WorkerRequest, WorkerResponse } from "@/lib/transactions.worker";
+const EMPTY_STATS = aggregate([]); 
 
 export interface AppContextValue {
   ready: boolean;
@@ -41,8 +37,11 @@ export interface AppContextValue {
 const AppContext = createContext<AppContextValue | null>(null);
 
 export function AppProvider({ children }: { children: ReactNode }) {
+  const workerRef = useRef<Worker | null>(null);
+  const requestId = useRef(0);
+  const [result, setResult] = useState<WorkerResponse | null>(null);
+
   const pathname = usePathname();
-  const [data, setData] = useState<PreparedData | null>(null);
 
   const [query, setQuery] = useState("");
   const [region, setRegion] = useState<RegionFilter>("All");
@@ -53,30 +52,37 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [notificationsOpen, setNotificationsOpen] = useState(false);
 
   useEffect(() => {
-    if (pathname !== "/" || data) return;
-    fetch("/data/transactions.json")
-      .then((res) => res.text())
-      .then((text) => {
-        const raw = JSON.parse(text) as Transaction[];
-        setData(prepareTransactions(raw));
-      });
-  }, [pathname, data]);
+    if (pathname !== "/") return;
+    const worker = new Worker(
+      new URL("../lib/transactions.worker.ts", import.meta.url),
+      { type: "module" },
+    );
+    worker.onmessage = (e: MessageEvent<WorkerResponse>) => {
+      // Ignore answers to old requests (user kept typing).
+      if (e.data.id === requestId.current) setResult(e.data);
+    };
+    workerRef.current = worker;
+    return () => {
+      worker.terminate();
+      workerRef.current = null;
+    };
+  }, [pathname]);
 
-  const deferredQuery = useDeferredValue(query);
-
-  const filtered = useMemo(
-    () => (data ? filterTransactions(data, deferredQuery, region) : []),
-    [data, deferredQuery, region],
-  );
-  const stats = useMemo(() => aggregate(filtered), [filtered]);
+  useEffect(() => {
+    const worker = workerRef.current;
+    if (!worker) return;
+    requestId.current += 1;
+    const request: WorkerRequest = { id: requestId.current, query, region };
+    worker.postMessage(request);
+  }, [query, region, pathname]);
 
   // PERF-BUG #5: a brand-new value object on every render, so every consumer
   // re-renders even when the slice it reads did not change.
   const value: AppContextValue = {
-    ready: data !== null, // in the value
-    regionCounts: data?.regionCounts ?? null,
-    filtered,
-    stats,
+    ready: result !== null,
+    regionCounts: result?.regionCounts ?? null,
+    filtered: result?.filtered ?? [],
+    stats: result?.stats ?? EMPTY_STATS,
     query,
     setQuery,
     region,

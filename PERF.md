@@ -59,3 +59,4 @@ Raw per-run JSON (all runs, medians, request log, long-task list, attribution) i
 | Week | Date | Commit | Change | LCP (s) | INP (ms) | CLS | JS dashboard (KB gz) | JS /about (KB gz) | Long tasks (count / total ms / max ms) | TBT (ms) | Notes |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 0 | 2026-10-25 | b2bda4d | Baseline | 12.77 | 6256 | 0.411 | 278.1 | 230.7 | 25 / 29596 / 5320 | 8912 | FCP 0.45 s · hero text 2.04 s · img 67.6 MB · fonts 445.7 KB · 21 tasks > 200 ms |
+| 1 | 2026-10-31 | 7580cea | Fix banner CLS | 12.77 | 6008 | 0.001 | 278.1 | 230.8 | 33 / 30644 / 5589 | 9560 | FCP 0.45 s · hero text 2.04 s · img 63.8 MB · fonts 445.7 KB · 21 tasks > 200 ms |

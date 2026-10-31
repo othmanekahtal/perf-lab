@@ -1,32 +1,74 @@
-import type { MonthPoint, RegionFilter, Stats, Status, Transaction } from "./types";
+import type {
+  MonthPoint,
+  RegionFilter,
+  Stats,
+  Status,
+  Transaction,
+} from "./types";
 
-// PERF-BUG #2: full-text filter over every field of every row, rebuilding a
-// lowercase haystack string per row on every call (i.e. every keystroke).
-export function filterTransactions(rows: Transaction[], query: string, region: RegionFilter): Transaction[] {
+export interface PreparedData {
+  rows: Transaction[]; // sorted newest first, once
+  search: string[]; // search[i] = lowercase text of rows[i]
+  regionCounts: Record<RegionFilter, number>; // for the sidebar, computed once
+}
+
+export function prepareTransactions(raw: Transaction[]): PreparedData {
+  const rows = raw
+    .map((row) => ({ row, time: Date.parse(row.date) })) // parse each date ONCE
+    .sort(
+      (a, b) => b.time - a.time || a.row.customer.localeCompare(b.row.customer),
+    )
+    .map((x) => x.row);
+
+  const search = rows.map((row) =>
+    Object.values(row)
+      .map((v) => (Array.isArray(v) ? v.join(" ") : String(v)))
+      .join(" ")
+      .toLowerCase(),
+  );
+
+  const regionCounts: Record<RegionFilter, number> = {
+    All: rows.length,
+    "North America": 0,
+    EMEA: 0,
+    LATAM: 0,
+    APAC: 0,
+  };
+  for (const row of rows) regionCounts[row.region]++;
+
+  return { rows, search, regionCounts };
+}
+
+export function filterTransactions(
+  { rows, search }: PreparedData,
+  query: string,
+  region: RegionFilter,
+): Transaction[] {
   const q = query.trim().toLowerCase();
+  if (!q && region === "All") return rows;
   const out: Transaction[] = [];
-  for (const row of rows) {
-    if (region !== "All" && row.region !== region) continue;
-    if (q) {
-      const haystack = Object.values(row)
-        .map((v) => (Array.isArray(v) ? v.join(" ") : String(v)))
-        .join(" ")
-        .toLowerCase();
-      if (!haystack.includes(q)) continue;
-    }
-    out.push(row);
+  for (let i = 0; i < rows.length; i++) {
+    if (region !== "All" && rows[i].region !== region) continue;
+    if (q && !search[i].includes(q)) continue;
+    out.push(rows[i]);
   }
   return out;
 }
 
-// PERF-BUG #2: copies and sorts the whole array, parsing dates inside the comparator.
-export function sortTransactions(rows: Transaction[]): Transaction[] {
-  return [...rows].sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime() || a.customer.localeCompare(b.customer),
-  );
+const monthLabels = new Map<string, string>();
+function monthLabel(key: string) {
+  let label = monthLabels.get(key);
+  if (!label) {
+    label = new Date(`${key}-01T00:00:00Z`).toLocaleDateString("en-US", {
+      month: "short",
+      year: "2-digit",
+      timeZone: "UTC",
+    });
+    monthLabels.set(key, label);
+  }
+  return label;
 }
 
-// PERF-BUG #2: several aggregate passes, with locale date formatting per row.
 export function aggregate(rows: Transaction[]): Stats {
   let revenue = 0;
   let refunded = 0;
@@ -41,9 +83,8 @@ export function aggregate(rows: Transaction[]): Stats {
     if (row.status === "refunded") refunded++;
     if (row.status === "failed") failed++;
 
-    const d = new Date(row.date);
     const key = row.date.slice(0, 7);
-    const label = d.toLocaleDateString("en-US", { month: "short", year: "2-digit" });
+    const label = monthLabel(key);
     const point = months.get(key) ?? {
       key,
       label,
@@ -59,9 +100,15 @@ export function aggregate(rows: Transaction[]): Stats {
     point[row.region] += row.amount;
     months.set(key, point);
 
-    categories.set(row.category, (categories.get(row.category) ?? 0) + row.amount);
+    categories.set(
+      row.category,
+      (categories.get(row.category) ?? 0) + row.amount,
+    );
     statuses.set(row.status, (statuses.get(row.status) ?? 0) + 1);
-    customers.set(row.customer, (customers.get(row.customer) ?? 0) + row.amount);
+    customers.set(
+      row.customer,
+      (customers.get(row.customer) ?? 0) + row.amount,
+    );
   }
 
   const orders = rows.length;
@@ -84,4 +131,8 @@ export function aggregate(rows: Transaction[]): Stats {
 }
 
 export const usd = (n: number, digits = 0) =>
-  new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: digits }).format(n);
+  new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: digits,
+  }).format(n);

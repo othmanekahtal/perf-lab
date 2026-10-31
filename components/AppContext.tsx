@@ -1,13 +1,26 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useDeferredValue,
+  useEffect,
+  useMemo,
+  useState,
+  type ReactNode,
+} from "react";
 import { usePathname } from "next/navigation";
-import { aggregate, filterTransactions, sortTransactions } from "@/lib/compute";
+import {
+  aggregate,
+  filterTransactions,
+  PreparedData,
+  prepareTransactions,
+} from "@/lib/compute";
 import type { RegionFilter, Stats, Transaction } from "@/lib/types";
 
 export interface AppContextValue {
   ready: boolean;
-  transactions: Transaction[] | null;
+  regionCounts: Record<RegionFilter, number> | null; // in the type;
   filtered: Transaction[];
   stats: Stats;
   query: string;
@@ -29,35 +42,39 @@ const AppContext = createContext<AppContextValue | null>(null);
 
 export function AppProvider({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const [transactions, setTransactions] = useState<Transaction[] | null>(null);
+  const [data, setData] = useState<PreparedData | null>(null);
+
   const [query, setQuery] = useState("");
   const [region, setRegion] = useState<RegionFilter>("All");
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [density, setDensity] = useState<"comfortable" | "compact">("comfortable");
+  const [density, setDensity] = useState<"comfortable" | "compact">(
+    "comfortable",
+  );
   const [notificationsOpen, setNotificationsOpen] = useState(false);
 
   useEffect(() => {
-    if (pathname !== "/" || transactions) return;
+    if (pathname !== "/" || data) return;
     fetch("/data/transactions.json")
       .then((res) => res.text())
       .then((text) => {
-        // PERF-BUG #2: ~5 MB JSON.parse on the main thread (no worker, no streaming).
-        const rows = JSON.parse(text) as Transaction[];
-        setTransactions(rows);
+        const raw = JSON.parse(text) as Transaction[];
+        setData(prepareTransactions(raw));
       });
-  }, [pathname, transactions]);
+  }, [pathname, data]);
 
-  // PERF-BUG #2: synchronous filter → sort → aggregate over the full array on
-  // EVERY render of the provider (every keystroke, every click). No debounce,
-  // no memoization, no worker.
-  const filtered = sortTransactions(filterTransactions(transactions ?? [], query, region));
-  const stats = aggregate(filtered);
+  const deferredQuery = useDeferredValue(query);
+
+  const filtered = useMemo(
+    () => (data ? filterTransactions(data, deferredQuery, region) : []),
+    [data, deferredQuery, region],
+  );
+  const stats = useMemo(() => aggregate(filtered), [filtered]);
 
   // PERF-BUG #5: a brand-new value object on every render, so every consumer
   // re-renders even when the slice it reads did not change.
   const value: AppContextValue = {
-    ready: transactions !== null,
-    transactions,
+    ready: data !== null, // in the value
+    regionCounts: data?.regionCounts ?? null,
     filtered,
     stats,
     query,

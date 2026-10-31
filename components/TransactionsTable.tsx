@@ -31,6 +31,7 @@ export function TransactionsTable() {
   const rows = filtered.slice(0, MAX_ROWS); 
   const pad = density === "compact" ? "px-3 py-1" : "px-3 py-2";
   const parentRef = React.useRef<HTMLDivElement>(null);
+  // eslint-disable-next-line react-hooks/incompatible-library
   const rowVirtualizer = useVirtualizer({
     count: rows.length, 
     getScrollElement: () => parentRef.current,

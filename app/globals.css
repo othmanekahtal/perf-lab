@@ -1,38 +1,7 @@
 @import "tailwindcss";
 
-/*
- * PERF-BUG #4: full, unsubset Inter (~110 KB per weight) loaded through raw
- * @font-face with NO font-display. Chrome defaults to `auto` (≈ block), so text
- * stays invisible until the font arrives. next/font is deliberately not used
- * because it adds `font-display: swap`.
- */
-@font-face {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 400;
-  src: url("/fonts/inter-400.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 500;
-  src: url("/fonts/inter-500.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 600;
-  src: url("/fonts/inter-600.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 700;
-  src: url("/fonts/inter-700.woff2") format("woff2");
-}
-
-@theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
 body {

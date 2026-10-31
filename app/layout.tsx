@@ -3,6 +3,8 @@ import { AppProvider } from "@/components/AppContext";
 import { Header } from "@/components/Header";
 import { PromoBanner } from "@/components/PromoBanner";
 import { Sidebar } from "@/components/Sidebar";
+import localFont from "next/font/local";
+
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -10,9 +12,16 @@ export const metadata: Metadata = {
   description: "A deliberately slow internal analytics dashboard used as a performance-engineering lab.",
 };
 
+
+const inter = localFont({
+  src: "./fonts/InterVariable-latin.woff2",
+  weight: "100 900",     // a variable font: one file covers every weight
+  display: "swap",       // the default; written out so you remember why
+  variable: "--font-inter",
+});
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en">
+<html lang="en" className={inter.variable}>
       <body className="min-h-screen bg-slate-50 text-slate-900 antialiased">
         {/* PERF-BUG #5: a single god-context wraps the entire app. */}
         <AppProvider>

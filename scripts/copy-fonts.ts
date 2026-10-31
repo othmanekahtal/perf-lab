@@ -1,27 +1,16 @@
 /**
- * Copies full (unsubset, ~110 KB each) Inter woff2 files from the official
- * `inter-ui` package into public/fonts.
- *
- * PERF-BUG #4: we ship the full-coverage font files and load them via raw
- * @font-face with no font-display (see app/globals.css).
+ * Copies Inter's latin variable subset (~97 KB, every weight in one file) from the
+ * official `inter-ui` package into app/fonts, where next/font/local loads it.
  */
+
 import { copyFileSync, existsSync, mkdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 
-const SRC = join(process.cwd(), "node_modules", "inter-ui", "web");
-const OUT = join(process.cwd(), "public", "fonts");
-const FILES: Record<number, string> = {
-  400: "Inter-Regular.woff2",
-  500: "Inter-Medium.woff2",
-  600: "Inter-SemiBold.woff2",
-  700: "Inter-Bold.woff2",
-};
+const SRC = join(process.cwd(), "node_modules", "inter-ui", "variable-latin", "InterVariable-subset.woff2");
+const OUT_DIR = join(process.cwd(), "app", "fonts");
+const DEST = join(OUT_DIR, "InterVariable-latin.woff2");
 
-if (!existsSync(SRC)) throw new Error(`missing ${SRC} — run pnpm install first`);
-mkdirSync(OUT, { recursive: true });
-
-for (const [weight, name] of Object.entries(FILES)) {
-  const dest = join(OUT, `inter-${weight}.woff2`);
-  copyFileSync(join(SRC, name), dest);
-  console.log(`${name} → ${dest} (${(statSync(dest).size / 1024).toFixed(0)} KB)`);
-}
+if (!existsSync(SRC)) throw new Error(`missing ${SRC}: run pnpm install first`);
+mkdirSync(OUT_DIR, { recursive: true });
+copyFileSync(SRC, DEST);
+console.log(`InterVariable-subset.woff2 → ${DEST} (${(statSync(DEST).size / 1024).toFixed(0)} KB)`);
